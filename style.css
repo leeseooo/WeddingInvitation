@@ -11,12 +11,6 @@ body{
 * {
   font-family: "Gowun Dodum", sans-serif;
 }
-.container{
-  width:100%;
-  height:500rem;
-  margin:0;
-  padding:0;
-}
 .main-picture {
   display: flex;
   align-items: center;
@@ -25,33 +19,38 @@ body{
 .main-picture img {
   width: 100%;
 }
+.main-info{
+  width:100%;
+  height:200rem;
+  margin:0;
+  padding:0;
+}
 .main-info-title p {
   justify-content: center;
   align-items: center;
   display: flex;
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 .main-info-location p {
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-align: center;
   margin: 0;
 }
 .divide-line {
-  margin: 5rem 5rem;
+  margin: 3rem 3rem;
   border: 0.7px solid rgb(218, 218, 218);
   
 }
 .main-greeting {
-  margin-bottom: 20rem;
-  margin-left: 5rem;
+  margin:0 auto;
+  padding-left:3rem;
 }
 .main-greeting-title {
-  font-size: 1.5rem;
-  letter-spacing: 0.5rem;
+  font-size: 1.3rem;
 }
 .main-greeting-title p {
-  letter-spacing: 6.3rem;
-  font-size:1.5rem;
+  letter-spacing: 3.2rem;
+  font-size:1.3rem;
 }
 .main-greeting-text p {
   font-size: 1.3rem;
@@ -59,27 +58,28 @@ body{
 }
 .wedding-gallery {
   padding:5rem 0;
-  margin:0 auto;
+  margin-top:5rem;
+  background: rgb(238, 238, 238);
 }
 .wedding-gallery p {
   font-size: 1.5rem;
-  margin-left: 3rem;
+  margin:0 auto;
+  padding-left: 1.5rem;
+  padding-bottom: 3rem;
   letter-spacing: 2rem;
 }
 .gallery-box {
-  margin-bottom: 10rem;
-  margin-left: 3rem;
+  margin:0 auto;
   border: 1px solid black;
-  width: 90%;
-  height: 70rem;
+  width:30rem;
   display:flex;
   align-items: center;
   justify-content: center;
   position:relative;
 }
 .gallery-box img{
-  width:100%;
-  height:100%;
+  max-width: 100%;
+  max-height: 100%;
   z-index: 0;
 }
 .gallery-box button{
@@ -102,8 +102,57 @@ body{
   width:100%;
   height:100%;
 }
-@media screen and (max-width: 320px) {
-  .main-picture img {
-    width: 32rem;
-  }
+.account-info{
+  margin:5rem 0;
+}
+.account-info p{
+  text-align: center;
+  margin:0;
+}
+.account-info p:nth-child(1){
+  font-weight: bold;
+  font-size:1.3rem;
+}
+.account-info p:nth-child(2){
+  font-size:1.1rem;
+  padding-bottom: 3rem;
+}
+.account-info button{
+  display: flex;
+  margin:0 auto;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border:none;
+  background: rgb(238, 238, 238);
+  font-size: 1.2rem;
+  width:15rem;
+  height:3rem;
+}
+.acc-btn1,.acc-btn2{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.contact{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact-1,.contact-2{
+  display: flex;
+
+}
+.contact-1 p,.contact-2 p{
+font-size: 1.4rem;
+display: flex;
+margin-right: 3rem;
+}
+.contact button{
+  border:none;
+  background: none;
+  color:rgb(92, 92, 92);
+}
+.contact-1-call,.contact-2-call{
+  margin-right: 1rem;
 }
