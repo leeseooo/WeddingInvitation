@@ -1,0 +1,15 @@
+html {
+  font-size: 62.5%;
+  font-family: "Gowun Dodum", sans-serif;
+}
+a {
+  text-decoration: none;
+  list-style: none;
+  color: rgb(92, 92, 92);
+}
+li{
+  list-style: none;
+}
+button:hover {
+  cursor: pointer;
+}
