@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div class="wedding-gallery">
-      <p>웨딩갤러리</p>
-      <div class="gallery-box">
-        <button class="btn1">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <img src="@/assets/images/img2.jpg" />
-        <button class="btn2">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
+    <p>웨딩갤러리</p>
+
+    <div class="wedding-bg">
+      <img :src="images[current]" />
+    </div>
+    <div class="thumbnail-bar">
+      <li>
+        <div v-for="(image, idx) in images" :key="idx" @click="current = idx">
+          <img :src="images[idx]" />
+        </div>
+      </li>
     </div>
     <div class="wedding-map">
       <img src="@/assets/images/map.jpg" />
@@ -19,51 +19,76 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      images: [
+        require("@/assets/images/img1.jpg"),
+        require("@/assets/images/img2.jpg"),
+        require("@/assets/images/img4.jpg"),
+        require("@/assets/images/img5.jpg"),
+        require("@/assets/images/img6.jpg"),
+        require("@/assets/images/img7.jpg"),
+        require("@/assets/images/img8.jpg"),
+        require("@/assets/images/img9.jpg"),
+        require("@/assets/images/img10.jpg"),
+        require("@/assets/images/img11.jpg"),
+        require("@/assets/images/img12.jpg"),
+        require("@/assets/images/img13.jpg"),
+      ],
+      current: 0,
+    };
+  },
+  methods: {
+    handleBtn1() {
+      if (this.current == 0) {
+        this.current = this.images.length - 1;
+      } else this.current -= 1;
+    },
+    handleBtn2() {
+      if (this.current == this.images.length - 1) {
+        this.current = 0;
+      } else this.current += 1;
+    },
+  },
+};
 </script>
 
 <style scoped>
-.wedding-gallery {
-  padding: 5rem 0;
-  margin-top: 5rem;
-  background: rgb(238, 238, 238);
+.wedding-bg {
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
-.wedding-gallery p {
-  font-size: 1.5rem;
+.wedding-bg img {
+  width:100%;
+  height:50rem;
+  object-fit: cover;
+}
+.thumbnail-bar{
+  overflow: hidden;
+  height:13rem;
+}
+.thumbnail-bar li{
+  overflow-x: scroll;
+  width:100%;
+  /* white-space: nowrap; */
+  display: flex;
+  flex-wrap: nowrap;
+}
+.thumbnail-bar img {
+  width: 10rem;
+  cursor: pointer;
+}
+p {
+  font-size: 1.8rem;
   margin: 0 auto;
   padding-left: 1.5rem;
   padding-bottom: 3rem;
   letter-spacing: 2rem;
 }
-.gallery-box {
-  margin: 0 auto;
-  border: 1px solid black;
-  width: 30rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.gallery-box img {
-  max-width: 100%;
-  max-height: 100%;
-  z-index: 0;
-}
-.gallery-box button {
-  background: none;
-  border: none;
-  position: absolute;
-  z-index: 1;
-  color: white;
-}
-.gallery-box button:hover {
-  cursor: pointer;
-}
-.btn1 {
-  left: 0;
-}
-.btn2 {
-  right: 0;
+.wedding-map{
+  margin-top: 5rem;
 }
 .wedding-map img {
   width: 100%;

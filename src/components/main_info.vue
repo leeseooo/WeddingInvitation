@@ -9,7 +9,7 @@
         <p>/ 이지은 & 정동현 /</p>
       </div>
       <div class="main-info-location">
-        <p>2022년 2월 19일 토요일 오후 5시</p>
+        <p>2022년 2월 19일 토요일 오후 3시</p>
         <p>서울특별시 영등포구 양평로 58 그랜드컨벤션센터</p>
       </div>
       <div class="divide-line"></div>
@@ -54,7 +54,7 @@ export default {};
   letter-spacing: 0.8rem;
 }
 .main-info-location p {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   text-align: center;
   margin: 0;
 }
