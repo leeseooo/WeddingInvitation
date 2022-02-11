@@ -5,75 +5,51 @@
       <div class="desc">토요일 오후 3시 30분</div>
     </div>
     <div class="divide-line"></div>
-    <div>
-      <div class="day-row">
-        <div class="sun">Sun</div>
-        <div>Mon</div>
-        <div>Tue</div>
-        <div>Wed</div>
-        <div>Thu</div>
-        <div>Fri</div>
-        <div>Sat</div>
+
+    <div class="day-row">
+      <div v-for="day in days" :key="day" :class="day.style">
+        {{ day.name }}
       </div>
-      <div class="date-column">
-        <div class="week1">
-          <div class="box holiday">30</div>
-          <div class="box holiday" id="newyear">
+    </div>
+    <div class="date-column">
+      <div class="week1">
+        <div
+          v-for="week in week1"
+          :key="week"
+          :class="week.style"
+          :id="week.id"
+        >
+          {{ week.date }}
+          <div v-if="week.date == 31 || week.date == 2">
             <div id="bar">설날연휴</div>
-            <div class="num1">31</div>
           </div>
-          <div class="box" id="newyear">
+          <div v-if="week.date == 1">
             <div id="bar">설날</div>
-            <div class="num1">1</div>
-          </div>
-          <div class="box" id="newyear">
-            <div id="bar">설날연휴</div>
-            <div class="num1">2</div>
-          </div>
-          <div class="box">3</div>
-          <div class="box">4</div>
-          <div class="box">5</div>
-        </div>
-        <!-- 1주 -->
-        <div class="week2">
-          <div class="box sun">6</div>
-          <div class="box">7</div>
-          <div class="box">8</div>
-          <div class="box">9</div>
-          <div class="box">10</div>
-          <div class="box">11</div>
-          <div class="box">12</div>
-        </div>
-        <div class="week3">
-          <div class="box sun">13</div>
-          <div class="box">14</div>
-          <div class="box">15</div>
-          <div class="box">16</div>
-          <div class="box">17</div>
-          <div class="box">18</div>
-          <div class="box">
-            <div class="num19">
-              <span>19</span>
-            </div>
           </div>
         </div>
-        <div class="week4">
-          <div class="box sun">20</div>
-          <div class="box">21</div>
-          <div class="box">22</div>
-          <div class="box">23</div>
-          <div class="box">24</div>
-          <div class="box">25</div>
-          <div class="box">26</div>
+      </div>
+      <!-- 1주 -->
+      <div class="week2">
+        <div v-for="week in week2" :key="week" :class="week.style">
+          {{ week.date }}
         </div>
-        <div class="week5">
-          <div class="box sun">27</div>
-          <div class="box">28</div>
-          <div class="box"></div>
-          <div class="box"></div>
-          <div class="box"></div>
-          <div class="box"></div>
-          <div class="box"></div>
+      </div>
+      <div class="week3">
+        <div v-for="week in week3" :key="week" :class="week.style">
+          {{ week.date }}
+          <div v-if="week.date == 19">
+            <div id="Dday"></div>
+          </div>
+        </div>
+      </div>
+      <div class="week4">
+        <div v-for="week in week4" :key="week" :class="week.style">
+          {{ week.date }}
+        </div>
+      </div>
+      <div class="week5">
+        <div v-for="week in week5" :key="week" :class="week.style">
+          {{ week.date }}
         </div>
       </div>
     </div>
@@ -96,7 +72,62 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      days: [
+        { name: "Sun", style: "sun" },
+        { name: "Mon", style: null },
+        { name: "Tue", style: null },
+        { name: "Wed", style: null },
+        { name: "Thu", style: null },
+        { name: "Fri", style: null },
+        { name: "Sat", style: null },
+      ],
+      week1: [
+        { date: 30, style: "box holiday", id: null },
+        { date: 31, style: "box holiday", id: "newyear" },
+        { date: 1, style: null, id: "newyear" },
+        { date: 2, style: null, id: null },
+        { date: 3, style: null, id: null },
+        { date: 4, style: null, id: null },
+        { date: 5, style: null, id: null },
+      ],
+      week2: [
+        { date: 6, style: "sun" },
+        { date: 7, style: null },
+        { date: 8, style: null },
+        { date: 9, style: null },
+        { date: 10, style: null },
+        { date: 11, style: null },
+        { date: 12, style: null },
+      ],
+      week3: [
+        { date: 13, style: "sun" },
+        { date: 14, style: null },
+        { date: 15, style: null },
+        { date: 16, style: null },
+        { date: 17, style: null },
+        { date: 18, style: null },
+        { date: 19, style: "num19" },
+      ],
+      week4: [
+        { date: 20, style: "sun" },
+        { date: 21, style: null },
+        { date: 22, style: null },
+        { date: 23, style: null },
+        { date: 24, style: null },
+        { date: 25, style: null },
+        { date: 26, style: null },
+      ],
+      week5: [
+        { date: 27, style: "sun" },
+        { date: 28, style: null },
+        { date: null, style: null },
+        { date: null, style: null },
+        { date: null, style: null },
+        { date: null, style: null },
+        { date: null, style: null },
+      ],
+    };
   },
 };
 </script>
@@ -135,6 +166,16 @@ export default {
   flex-direction: column;
   font-size: 1.4rem;
 }
+#bar {
+  position: absolute;
+  background: #d1b6e6;
+  width: 5rem;
+  color: white;
+  font-size: 1.1rem;
+}
+.week1 {
+  margin-right: 1rem;
+}
 .week1,
 .week2,
 .week3,
@@ -144,29 +185,24 @@ export default {
   justify-content: space-evenly;
   padding-top: 8%;
 }
+.week5 {
+  margin-right: 8rem;
+}
 .box {
-  width: 6%;
   text-align: center;
 }
-#newyear {
-  position: relative;
-}
-#bar {
-  position: absolute;
-  background: #d1b6e6;
-  width: 200%;
-  height: 100%;
-  transform: translate(0, 2rem);
-  color: white;
-  font-size: 1.1rem;
-  text-align: start;
-}
 .num19 {
-  border-radius: 100px;
-  background: #a588bb;
-}
-.num19 span {
   color: white;
+}
+#Dday {
+  z-index: -1;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 30px;
+  transform: translate(-0.7rem, -2.5rem);
+  background: #a588bb;
+  text-align: center;
 }
 .holiday {
   opacity: 0.5;
@@ -182,16 +218,12 @@ export default {
 .counting span {
   color: #c3a0df;
 }
-@media (min-width: 350px) {
-  .num19 {
-    width: 3rem;
-    height: 3rem;
-  }
-}
-@media (min-width: 420px) {
-  .num19 {
-    width: 3.1rem;
-    height: 3.1rem;
+@media (max-width: 320px) {
+  #bar {
+    position: absolute;
+    background: #d1b6e6;
+    color: white;
+    font-size: 1rem;
   }
 }
 </style>
