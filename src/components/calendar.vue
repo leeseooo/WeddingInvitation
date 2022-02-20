@@ -54,9 +54,7 @@
       </div>
     </div>
     <div class="divide-line"></div>
-    <div class="counting">
-      동현<span>♥</span>지은의 결혼식이 {{ getDate }}일 남았습니다.
-    </div>
+    <div class="counting">동현<span>♥</span>지은의 결혼식이 {{ getDate }}</div>
     <div class="divide-line"></div>
   </div>
 </template>
@@ -68,7 +66,12 @@ export default {
       let count = new Date().getTime();
       let dday = new Date("february 19, 2022 0:00:00").getTime();
       let gap = dday - count;
-      return Math.ceil(gap / (1000 * 60 * 60 * 24));
+      if (gap < 0) {
+        return (
+          Math.abs(Math.ceil(gap / (1000 * 60 * 60 * 24))) + "일 지났습니다."
+        );
+      }
+      return Math.ceil(gap / (1000 * 60 * 60 * 24)) + "일 남았습니다.";
     },
   },
   data() {
